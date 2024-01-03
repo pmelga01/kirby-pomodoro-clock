@@ -5,7 +5,7 @@ Description:
   There is a symbol at the bottom to keep track of how many working (25-minute) intervals one has been able to complete. The reset button removes these and starts the first 25:00
   timer once again.
 
-  Learn more about the Pomodoro Technique here![https://todoist.com/productivity-methods/pomodoro-technique](url)
+  Learn more about the Pomodoro Technique here: https://todoist.com/productivity-methods/pomodoro-technique !
 
 
 Date:
