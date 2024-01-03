@@ -34,12 +34,13 @@ def start_timer():
     global reps
     reps += 1
 
-    work_seconds = 10
-    short_break_seconds = 5
-    long_break_seconds = 15
-    # work_seconds = WORK_MIN * 60
-    # short_break_seconds = SHORT_BREAK_MIN * 60
-    # long_break_seconds = LONG_BREAK_MIN * 60
+    # for debugging:
+    # work_seconds = 10
+    # short_break_seconds = 5
+    # long_break_seconds = 15
+    work_seconds = WORK_MIN * 60
+    short_break_seconds = SHORT_BREAK_MIN * 60
+    long_break_seconds = LONG_BREAK_MIN * 60
     
     # if 1st/3rd/5th/7th rep -- working:
     if (reps % 2 != 0):

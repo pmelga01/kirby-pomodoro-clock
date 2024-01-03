@@ -1,4 +1,3 @@
-
 from tkinter import *
 # ---------------------------- CONSTANTS ------------------------------- #
 SHORT_BREAK_COLOR = "#B79CED"
@@ -32,21 +31,30 @@ def start_timer():
     start_button.config(state="disabled")
     global reps
     reps += 1
-    work_seconds = 10
+
+    # for debugging:
+    # work_seconds = 10
+    # short_break_seconds = 5
+    # long_break_seconds = 15
+    work_seconds = WORK_MIN * 60
     short_break_seconds = SHORT_BREAK_MIN * 60
     long_break_seconds = LONG_BREAK_MIN * 60
     
     # if 1st/3rd/5th/7th rep -- working:
     if (reps % 2 != 0):
         title_label.config(text="Work", fg=WORK_COLOR)
+        canvas.itemconfig(image_container, image=working_img)
+
         count_down(work_seconds)
     elif (reps == 8):
     # if it's 8th rep: -- taking long break
         title_label.config(text="Long Break", fg=LONG_BREAK_COLOR)
+        canvas.itemconfig(image_container, image=long_break_img)
         count_down(long_break_seconds)
     else:
     # if it's 2nd/4th/6th rep: -- taking short break
         title_label.config(text="Short Break", fg=SHORT_BREAK_COLOR)
+        canvas.itemconfig(image_container, image=short_break_img)
         count_down(short_break_seconds)
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -86,10 +94,15 @@ title_label = Label(text="Timer", fg=WORK_COLOR, bg=BACKGROUND, font=(FONT_NAME,
 title_label.grid(row=0, column=1)
 
 # roughly same size as image
-canvas = Canvas(width=200, height=224, bg=BACKGROUND, highlightthickness=0)
-tomato_img = PhotoImage(file="/Users/pamela/Documents/Dev/python100/day28_pomodoro-gui/tomato.png")
-canvas.create_image(100, 112, image=tomato_img)
-timer_text = canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
+canvas = Canvas(width=250, height=253, bg=BACKGROUND, highlightthickness=0)
+
+# Images
+working_img = PhotoImage(file="/Users/pamela/Documents/Dev/python100/day28_pomodoro-gui/kirby_pomodoro_work.png")
+short_break_img = PhotoImage(file="/Users/pamela/Documents/Dev/python100/day28_pomodoro-gui/kirby_pomodoro_shortbreak.png")
+long_break_img = PhotoImage(file="/Users/pamela/Documents/Dev/python100/day28_pomodoro-gui/kirby_pomodoro_longbreak.png")
+
+image_container = canvas.create_image(125, 90, image=working_img)
+timer_text = canvas.create_text(125, 200, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(row=1, column=1)
 
 # Button Start
